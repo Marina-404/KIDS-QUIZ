@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  --color-primary: #fef6df;
+  --color-secondary: #9d73b6;
+  --color-text: #f98e25;
+  --color-button: #eebefa;
+}
