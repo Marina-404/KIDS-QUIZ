@@ -48,7 +48,7 @@ const audio = new Audio(CorrectAudio);
 const badAudio = new Audio(BadAudio);
 const congratulationAdio = new Audio (CongratulationAudio)
   return (
-    <div className="min-h-screen text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
+    <div className=" text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
       <div>
         {/* numéro de la question */}
         <h2>
@@ -57,7 +57,7 @@ const congratulationAdio = new Audio (CongratulationAudio)
 
         {/* texte de la question  */}
         <p>{question.question}</p>
-        <div></div>
+        <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-1 lg:mx-50 lg:my-8">
         {question.answers.map((answer, index) => {
           // est ce que c'est la bonne reponse ?
           const correct = index === question.correctIndex;
@@ -75,12 +75,12 @@ const congratulationAdio = new Audio (CongratulationAudio)
 
           // buttons des réponses
           return (
-            <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2">
+            <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-80">
               <button
                 type="button"
                 key={index}
                 onClick={() => handleClick(index)}
-                className={`${backgroundColor} rounded-xl h-18`}
+                className={`${backgroundColor} rounded-xl h-28`}
                 disabled={select !== null}
               >
                 {answer.answer}
@@ -89,14 +89,15 @@ const congratulationAdio = new Audio (CongratulationAudio)
           );
         })}
       </div>
+      </div>
 
       {/* boutton question suivante ou derniere question*/}
-      <div>
+      <div className="py-4">
         {select !== null && (
           lastQuestion ? (
             <button 
             type="button"
-            className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
+            className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
             onClick={() => {(congratulationAdio.play());
               localStorage.setItem("score", score.toString());
               navigate ("/resultat");
@@ -107,12 +108,12 @@ const congratulationAdio = new Audio (CongratulationAudio)
           ) : (
             <button
               type="button"
+              className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-60 lg:w-80 lg:h-26"
               onClick={nextQuestion}
-              className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
             >
               {currentQuestion === questionData.length - 1
                 ? ""
-                : "Question suivante"}
+                : "Question suivante =>"}
             </button>
           ))}
       </div>
