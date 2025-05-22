@@ -1,4 +1,3 @@
-import type { Question } from "../types/Question";
 import { questionData } from "../data/quizData";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -10,13 +9,19 @@ function Quiz() {
   // choix du joueur
   const [select, setSelect] = useState<number | null>(null);
 
+  // enregistrer le score
+  const [score, setScore] = useState(0);
+  
   // question actuelle
   const question = questionData[currentQuestion];
 
-  // enregistre la reponse
+  // enregistre la reponse si elle est vrai implemente +1 à score
   const handleClick = (index: number) => {
     setSelect(index); 
-  }
+    if (index === question.correctIndex) {
+      setScore((valueScore) => valueScore +1);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -36,6 +41,7 @@ function Quiz() {
   return (
     <>
       <div>
+        <h4>{score}</h4>
         {/* numéro de la question */}
         <h2>
           Question {currentQuestion + 1} / {questionData.length} :
@@ -84,7 +90,7 @@ function Quiz() {
             type="button"
             onClick={() => navigate ("/resultat")}
             >
-              Voir tes resultats
+              Voir tes resultats 🚀
             </button>
           ) : (
           <button
