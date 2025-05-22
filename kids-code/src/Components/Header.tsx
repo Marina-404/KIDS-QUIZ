@@ -1,18 +1,21 @@
-// import { useState } from "react";
+import { useState } from "react";
 
 function Header() {
-  //   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <div>
+      <article className="flex bg-[var(--color-primary)] items-center text-5xl justify-start p-3 md:">
         <img
-          className="w-40 p-2"
+          className="w-30"
           src="./public/logo-kids-code.png"
           alt="Kids Code"
         />
-        <h1 className="bg-text">KIDS CODE</h1>
-        {/* <button>
+        <h1 className="lilita-one-regular text-[var(--color-text)] pr-2">
+          KIDS CODE
+        </h1>
+        <button
+          className="bg-[var(--color-secondary)] text-2xl cursor-pointer hidden md:block md:justify-end"
           type="button"
           onClick={() => {
             setIsOpen(true);
@@ -22,7 +25,7 @@ function Header() {
         </button>
         {isOpen && (
           <div>
-            <p>
+            <p className="text-3xl">
               Le code informatique, c’est un peu comme une recette de cuisine,
               mais pour les ordinateurs. On lui dit quoi faire, étape par étape
               : afficher un message, poser une question, faire bouger un
@@ -32,6 +35,7 @@ function Header() {
               s’amusant.
             </p>
             <button
+              className="bg-[var(--color-secondary)] text-2xl"
               type="button"
               onClick={() => {
                 setIsOpen(false);
@@ -40,8 +44,8 @@ function Header() {
               Fermer
             </button>
           </div>
-        )} */}
-      </div>
+        )}
+      </article>
     </>
   );
 }
