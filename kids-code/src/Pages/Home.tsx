@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import GirlPicture from "../../public/illustration.webp";
 import BoutonLeCode from "../Components/Bouton_LeCode";
 import { useState, useEffect } from "react";
+
 
 const anecdotes = [
   "Le tout premier bug informatique était... un vrai insecte ! Une mite s’était coincée dans un ordinateur en 1947.",
@@ -26,6 +28,7 @@ const anecdotes = [
 ];
 
 function Home() {
+  const navigate = useNavigate();
   const [anecdote, setAnecdote] = useState("");
 useEffect(() => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length);
@@ -49,6 +52,7 @@ useEffect(() => {
          <button className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-xl
 "
         type="button"
+        onClick={() => navigate ("/quiz")}
        >Prêt? Go!</button>
  <div className="md:hidden">
           <BoutonLeCode />
