@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function BoutonLeCode() {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
