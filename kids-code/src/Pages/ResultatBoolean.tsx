@@ -43,7 +43,7 @@ function ResultatBoolean() {
           />
           <div className="text-[var(--color-text)] w-[80%] p-2 mx-auto text-2xl">
             <p>
-              10 sur 10 ! Tu es un(e) vrai(e) pro du code, rien ne t'arrête ! 🚀
+              10 sur 10 ! Tu es un(e) vrai(e) pro du code, rien ne t'arrête !🚀
             </p>
             <p className="text-[var(--color-secondary)] text-2xl pt-10 pb-2 md:pb-8">
               Anecdote :<br />
