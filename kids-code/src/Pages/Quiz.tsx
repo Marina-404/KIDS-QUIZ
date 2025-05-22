@@ -1,9 +1,7 @@
 import { questionData } from "../data/quizData";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import CorrectAudio from "../../public/Voicy_Duolingo answer correct sound.mp3";
-import BadAudio from "../../public/Voicy_Bad answer.mp3";
-import CongratulationAudio from "../../public/CRWDApls_Applaudissements 25 50 pers 1 (ID 0812)_LS.mp3"
+
 function Quiz() {
   // question affichée
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -19,14 +17,9 @@ function Quiz() {
 
   // enregistre la reponse si elle est vrai implemente +1 à score
   const handleClick = (index: number) => {
-    setSelect(index); 
-    if (index !== question.correctIndex){
-   badAudio.play();}
+    setSelect(index);
     if (index === question.correctIndex) {
-       audio.play();
-
-      setScore((valueScore) => valueScore +1);
-      
+      setScore((valueScore) => valueScore + 1);
     }
   };
 
@@ -43,10 +36,8 @@ function Quiz() {
     } else {
       navigate("/resultat");
     }
-  }
-const audio = new Audio(CorrectAudio);
-const badAudio = new Audio(BadAudio);
-const congratulationAdio = new Audio (CongratulationAudio)
+  };
+
   return (
     <div className=" text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
       <div>
