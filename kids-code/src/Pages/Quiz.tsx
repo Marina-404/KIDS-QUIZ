@@ -39,9 +39,8 @@ function Quiz() {
   }
 
   return (
-    <>
+    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)] lg:flex flex-col justify-center items-center">
       <div>
-        <h4>{score}</h4>
         {/* numéro de la question */}
         <h2>
           Question {currentQuestion + 1} / {questionData.length} :
@@ -58,7 +57,7 @@ function Quiz() {
           // reponse selectionnée ?
           const selected = index === select;
 
-          let backgroundColor = "bg-white";
+          let backgroundColor = "bg-[var(--color-secondary)]";
 
         if (select !== null) {
           if(selected && correct) backgroundColor ="bg-green-300";
@@ -72,13 +71,15 @@ function Quiz() {
           type="button"
           key={index}
           onClick={() => handleClick(index)}
-          className={`${backgroundColor}`}
+          className={`${backgroundColor} text-[var(--color-primary)] sniglet-regular   px-6 py-2 text-lg cursor-pointer rounded-xl
+"`}
+          
           disabled={select !== null}
           >
             {answer.answer}
           </button>
         );
-})};
+})}
       </div>
 
       
@@ -88,6 +89,8 @@ function Quiz() {
           lastQuestion ? (
             <button 
             type="button"
+          
+
             onClick={() => navigate ("/resultat")}
             >
               Voir tes resultats 🚀
@@ -96,11 +99,12 @@ function Quiz() {
           <button
           type="button"
           onClick={nextQuestion}
+          
           >
             {currentQuestion === questionData.length -1 ? "" : "Question suivante"}
           </button>
           )
-        )};
+        )}
       </div>
 
       {/* apparition de la fact en meme temps que le bouton suivant */}
@@ -109,7 +113,7 @@ function Quiz() {
           <p>{question.fact}</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
