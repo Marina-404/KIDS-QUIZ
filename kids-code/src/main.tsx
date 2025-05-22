@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Quiz from "./Pages/Quiz";
 import Resultat from "./Pages/Resultat";
 import QuizBoolean from "./Pages/QuizBoolean";
+import ResultatBoolean from "./Pages/ResultatBoolean.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/quiz-true-dare",
-        element:<QuizBoolean />,
+        element: <QuizBoolean />,
       },
       {
         path: "/resultat",
         element: <Resultat />,
+      },
+      {
+        path: "/resultatBoolean",
+        element: <ResultatBoolean />,
       },
       {
         path: "*",
