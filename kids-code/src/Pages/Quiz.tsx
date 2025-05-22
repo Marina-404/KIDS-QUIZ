@@ -2,6 +2,7 @@ import { questionData } from "../data/quizData";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+
 function Quiz() {
   // question affichée
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -91,7 +92,9 @@ function Quiz() {
             <button 
             type="button"
             className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
-            onClick={() => navigate ("/resultat")}
+            onClick={() => {
+              localStorage.setItem("score", score.toString());
+              navigate ("/resultat")}}
             >
               Voir tes resultats 🚀
             </button>
