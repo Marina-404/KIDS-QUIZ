@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 const anecdotes = [
   "Le tout premier bug informatique était... un vrai insecte ! Une mite s’était coincée dans un ordinateur en 1947.",
@@ -61,6 +62,16 @@ function Resultat() {
               {anecdote}
             </p>
           </div>
+
+          <Link to="/">
+            <button
+              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-xl
+"
+              type="button"
+            >
+              Retour à l'accueil
+            </button>
+          </Link>
         </div>
       </section>
     </>
