@@ -7,6 +7,8 @@ import Home from "./Pages/Home";
 import Quiz from "./Pages/Quiz";
 import Resultat from "./Pages/Resultat";
 import Errorpath from "./Pages/404.tsx";
+import QuizBoolean from "./Pages/QuizBoolean.tsx";
+import ResultatBoolean from "./Pages/ResultatBoolean.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -20,47 +22,24 @@ const router = createBrowserRouter([
 				path: "/quiz",
 				element: <Quiz />,
 			},
+         {
+        path: "/quiz-true-false",
+        element:<QuizBoolean />,
+      },
 			{
 				path: "/resultat",
 				element: <Resultat />,
 			},
-		],
-	},
+      {
+				path: "/resultats",
+				element: <ResultatBoolean />,
+			},
 	{
 		path: "*",
 		element: <Errorpath />,
-	},
-=======
-import QuizBoolean from "./Pages/QuizBoolean";
-
-const router = createBrowserRouter([
-  {
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/quiz",
-        element: <Quiz />,
-      },
-      {
-        path: "/quiz-true-dare",
-        element:<QuizBoolean />,
-      },
-      {
-        path: "/resultat",
-        element: <Resultat />,
-      },
-      {
-        path: "*",
-        element: <h1>Tu es perdu !</h1>,
-      },
-    ],
-  },
-]);
-
+	}]
+},
+])
 const rootElement = document.getElementById("root");
 if (rootElement == null) {
 	throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
