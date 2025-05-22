@@ -1,4 +1,5 @@
 import type { QuestionTrueOrFalse } from "../types/QuestionType"
+
 export const trueOrFalseData: QuestionTrueOrFalse[] = [
   {
     id: 1,
