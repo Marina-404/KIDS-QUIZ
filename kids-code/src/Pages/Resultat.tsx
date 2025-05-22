@@ -37,16 +37,20 @@ function Resultat() {
 
   return (
     <>
-      <section className="text-center bg-[var(--color-primary)]">
+      <section className="min-h-screen text-center bg-[var(--color-primary)]">
         <div>
           <img
-            className="w-40"
+            className="w-45 mx-auto md:pt-12"
             src="./public/quiz-termine.png"
             alt="quiz terminé"
           />
-          <h1 className="text-[var(--color-text)] text-6xl p-10">Résultat :</h1>
+          <h1 className="text-[var(--color-text)] text-6xl pb-10 pt-6">
+            Résultat :
+          </h1>
           <div className="text-[var(--color-text)] w-[80%] p-2 mx-auto text-2xl">
-            <p className="p-2">Tu as obtenu {scoreNumber} / {questionData.length}</p>
+            <p className="p-2">
+              Tu as obtenu {scoreNumber} / {questionData.length}
+            </p>
             <p>Bravo à toi !</p>
             <p className="pt-10">
               8 à 10 bonnes réponses : Incroyable ! Tu es prêt à coder ton
@@ -60,7 +64,7 @@ function Resultat() {
               0 à 4 bonnes réponses : Chaque expert a commencé débutant ! Rejoue
               pour t'améliorer.
             </p>
-            <p className="text-[var(--color-secondary)] text-2xl pt-10 pb-10">
+            <p className="text-[var(--color-secondary)] text-2xl pt-10 pb-2 md:pb-8">
               Anecdote :<br />
               {anecdote}
             </p>
@@ -68,7 +72,7 @@ function Resultat() {
 
           <Link to="/">
             <button
-              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-xl
+              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-6 text-lg cursor-pointer rounded-xl
 "
               type="button"
             >
