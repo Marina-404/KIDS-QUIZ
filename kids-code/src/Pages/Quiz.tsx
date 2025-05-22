@@ -88,7 +88,9 @@ function Quiz() {
           lastQuestion ? (
             <button 
             type="button"
-            onClick={() => navigate ("/resultat")}
+            onClick={() => {
+              localStorage.setItem("score", score.toString());
+              navigate ("/resultat")}}
             >
               Voir tes resultats 🚀
             </button>
