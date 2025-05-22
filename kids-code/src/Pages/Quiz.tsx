@@ -1,6 +1,7 @@
-import type { Question } from "../types/Question";
 import { questionData } from "../data/quizData";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 function Quiz() {
   // question affichée
@@ -9,13 +10,24 @@ function Quiz() {
   // choix du joueur
   const [select, setSelect] = useState<number | null>(null);
 
+  // enregistrer le score
+  const [score, setScore] = useState(0);
+  
   // question actuelle
   const question = questionData[currentQuestion];
 
-  // enregistre la reponse
+  // enregistre la reponse si elle est vrai implemente +1 à score
   const handleClick = (index: number) => {
     setSelect(index); 
-  }
+    if (index === question.correctIndex) {
+      setScore((valueScore) => valueScore +1);
+    }
+  };
+
+  const navigate = useNavigate();
+
+  // derniere question => page resultats
+  const lastQuestion = currentQuestion === questionData.length - 1;
 
   // question suivante
   const nextQuestion = () => {
@@ -23,12 +35,12 @@ function Quiz() {
       setCurrentQuestion((oldValue) => oldValue  +1);
       setSelect(null);
     } else {
-      alert("quiz finito !");
+      navigate("/resultat");
     }
   }
 
   return (
-    <>
+    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
       <div>
         {/* numéro de la question */}
         <h2>
@@ -37,7 +49,7 @@ function Quiz() {
         
         {/* texte de la question  */}
         <p>{question.question}</p>
-
+        <div></div>
         {question.answers.map((answer, index) => {
 
           // est ce que c'est la bonne reponse ?
@@ -46,7 +58,7 @@ function Quiz() {
           // reponse selectionnée ?
           const selected = index === select;
 
-          let backgroundColor = "bg-white";
+          let backgroundColor = "bg-[var(--color-secondary)]";
 
         if (select !== null) {
           if(selected && correct) backgroundColor ="bg-green-300";
@@ -56,31 +68,55 @@ function Quiz() {
         
         // buttons des réponses
         return (
+          <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2">
           <button
           type="button"
           key={index}
           onClick={() => handleClick(index)}
-          className={`${backgroundColor}`}
+          className={`${backgroundColor} rounded-xl h-18`}
+          
           disabled={select !== null}
           >
             {answer.answer}
           </button>
+          </div>
         );
-})};
+})}
       </div>
 
-      {/* boutton question suivante */}
+      
+      {/* boutton question suivante ou derniere question*/}
       <div>
         {select !== null && (
+          lastQuestion ? (
+            <button 
+            type="button"
+            className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
+            onClick={() => {
+              localStorage.setItem("score", score.toString());
+              navigate ("/resultat")}}
+            >
+              Voir tes resultats 🚀
+            </button>
+          ) : (
           <button
           type="button"
           onClick={nextQuestion}
+          className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
           >
             {currentQuestion === questionData.length -1 ? "" : "Question suivante"}
           </button>
-        )};
+          )
+        )}
       </div>
-    </>
+
+      {/* apparition de la fact en meme temps que le bouton suivant */}
+      <div>
+        {select !==null && (
+          <p>{question.fact}</p>
+        )}
+      </div>
+    </div>
   );
 }
 

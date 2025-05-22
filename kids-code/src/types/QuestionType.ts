@@ -5,3 +5,10 @@ export type Question = {
   correctIndex: number;
   fact: string;
 };
+
+export type QuestionTrueOrFalse = {
+  id: number;
+  question: string;
+  answer: boolean;
+  fact: string;
+};

@@ -30,6 +30,35 @@ const router = createBrowserRouter([
 		path: "*",
 		element: <Errorpath />,
 	},
+=======
+import QuizBoolean from "./Pages/QuizBoolean";
+
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/quiz",
+        element: <Quiz />,
+      },
+      {
+        path: "/quiz-true-dare",
+        element:<QuizBoolean />,
+      },
+      {
+        path: "/resultat",
+        element: <Resultat />,
+      },
+      {
+        path: "*",
+        element: <h1>Tu es perdu !</h1>,
+      },
+    ],
+  },
 ]);
 
 const rootElement = document.getElementById("root");
