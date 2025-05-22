@@ -6,7 +6,7 @@ function BoutonLeCode() {
   return (
     <>
       <button
-        className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-full
+        className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-full hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300
 "
         type="button"
         onClick={() => {

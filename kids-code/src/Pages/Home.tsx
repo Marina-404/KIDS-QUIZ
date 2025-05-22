@@ -37,7 +37,10 @@ useEffect(() => {
   return (
       <div className="min-h-screen text-center bg-[var(--color-primary)] lg:flex flex-row-reverse justify-center items-center">
         <div className="block1">
-        <img src={GirlPicture} alt="photo of a little girl sitting reading" />
+        <img 
+        src={GirlPicture} 
+        alt="photo of a little girl sitting reading" 
+        className="drop-shadow-[0_10px_10px_rgba(0,0,0,0.6)] rounded-xl"/>
         </div>
         <div className="block2">
         <article className="sniglet-regular text-[var(--color-text)] pr-2">
@@ -54,13 +57,19 @@ useEffect(() => {
           <p className="pb-2">5 - A la fin tu découvriras ton score</p>
         </article>
         <button
-          className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-4 text-lg cursor-pointer rounded-xl"
+        className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 m-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300"
         type="button"
         onClick={() => navigate ("/quiz")}
        >
-        Prêt ? Go !
+        Questions / Réponses 
        </button>
- <div className="md:hidden">
+       <button
+        className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 m-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300"
+        type="button"
+        onClick={() => navigate ("/quiz-true-false")}>
+        Vrai ou Faux ?
+       </button>
+       <div className="md:hidden">
           <BoutonLeCode />
         </div>    
         <p className="text-[var(--color-secondary)] text-2xl pt-8 pb-2 md:pb-8">

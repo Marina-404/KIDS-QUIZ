@@ -9,6 +9,7 @@ import Resultat from "./Pages/Resultat";
 import QuizBoolean from "./Pages/QuizBoolean";
 import Errorpath from "./Pages/404.tsx";
 import ResultatBoolean from "./Pages/ResultatBoolean.tsx";
+import Perdu from "./Pages/Perdu.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
 				path: "/resultats",
 				element: <ResultatBoolean />,
 			},
+      {
+        path: "/perdu",
+        element: <Perdu />,
+      },
       {
         path: "*",
         element: <Errorpath />,

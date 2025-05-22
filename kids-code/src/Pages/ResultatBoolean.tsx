@@ -53,7 +53,7 @@ function ResultatBoolean() {
 
           <Link to="/">
             <button
-              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-6 text-lg cursor-pointer rounded-xl
+              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300
 "
               type="button"
             >
