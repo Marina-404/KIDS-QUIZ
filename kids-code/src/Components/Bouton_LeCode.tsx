@@ -6,7 +6,7 @@ function BoutonLeCode() {
   return (
     <>
       <button
-        className="sniglet-extrabold bg-[var(--color-secondary)] text-white px-6 py-2 text-lg cursor-pointer rounded-full
+        className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-full
 "
         type="button"
         onClick={() => {
@@ -19,14 +19,14 @@ function BoutonLeCode() {
       </button>
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md text-black text-lg shadow-lg relative">
+          <div className="bg-[var(--color-primary)] rounded-lg p-6 max-w-md text-black text-lg shadow-lg relative">
             <button
               className="absolute top-2 right-2 text-xl"
               onClick={() => setIsOpen(false)}
             >
               ❌
             </button>
-            <p className="sniglet-extrabold">
+            <p>
               Le code informatique, c’est un peu comme une recette de cuisine,
               mais pour les ordinateurs. On lui dit quoi faire, étape par étape
               : afficher un message, poser une question, faire bouger un
