@@ -39,7 +39,7 @@ function Quiz() {
   }
 
   return (
-    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)] lg:flex flex-col justify-center items-center">
+    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
       <div>
         {/* numéro de la question */}
         <h2>
@@ -48,7 +48,7 @@ function Quiz() {
         
         {/* texte de la question  */}
         <p>{question.question}</p>
-
+        <div></div>
         {question.answers.map((answer, index) => {
 
           // est ce que c'est la bonne reponse ?
@@ -67,17 +67,18 @@ function Quiz() {
         
         // buttons des réponses
         return (
+          <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2">
           <button
           type="button"
           key={index}
           onClick={() => handleClick(index)}
-          className={`${backgroundColor} text-[var(--color-primary)] sniglet-regular   px-6 py-2 text-lg cursor-pointer rounded-xl
-"`}
+          className={`${backgroundColor} rounded-xl h-18`}
           
           disabled={select !== null}
           >
             {answer.answer}
           </button>
+          </div>
         );
 })}
       </div>
@@ -89,8 +90,7 @@ function Quiz() {
           lastQuestion ? (
             <button 
             type="button"
-          
-
+            className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
             onClick={() => navigate ("/resultat")}
             >
               Voir tes resultats 🚀
@@ -99,7 +99,7 @@ function Quiz() {
           <button
           type="button"
           onClick={nextQuestion}
-          
+          className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
           >
             {currentQuestion === questionData.length -1 ? "" : "Question suivante"}
           </button>
