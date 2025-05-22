@@ -8,6 +8,7 @@ import Quiz from "./Pages/Quiz";
 import Resultat from "./Pages/Resultat";
 import Errorpath from "./Pages/404.tsx";
 import QuizBoolean from "./Pages/QuizBoolean.tsx";
+import ResultatBoolean from "./Pages/ResultatBoolean.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
 			{
 				path: "/resultat",
 				element: <Resultat />,
+			},
+      {
+				path: "/resultats",
+				element: <ResultatBoolean />,
 			},
 	{
 		path: "*",
