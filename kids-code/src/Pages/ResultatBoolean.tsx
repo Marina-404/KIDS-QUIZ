@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { questionData } from "../data/quizData";
 
 const anecdotes = [
   "Le tout premier bug informatique était... un vrai insecte ! Une mite s’était coincée dans un ordinateur en 1947.",
@@ -25,10 +24,8 @@ const anecdotes = [
   'Le mot "bug" est maintenant utilisé pour parler de n’importe quel problème dans un programme.',
 ];
 
-function Resultat() {
+function ResultatBoolean() {
   const [anecdote, setAnecdote] = useState("");
-  const score = localStorage.getItem("score");
-  const scoreNumber = score ? parseInt(score) : 0;
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * anecdotes.length);
@@ -44,25 +41,9 @@ function Resultat() {
             src="./public/quiz-termine.png"
             alt="quiz terminé"
           />
-          <h1 className="text-[var(--color-text)] text-6xl p-10">
-            Résultat :
-            </h1>
           <div className="text-[var(--color-text)] w-[80%] p-2 mx-auto text-2xl">
-            <p className="p-2">
-              Tu as obtenu {scoreNumber} / {questionData.length}
-              </p>
-            <p>Bravo à toi !</p>
-            <p className="pt-10">
-              8 à 10 bonnes réponses : Incroyable ! Tu es prêt à coder ton
-              premier robot !
-            </p>
-            <p className="pt-10">
-              5 à 7 bonnes réponses : Pas mal ! Tu comprends déjà plein de
-              choses.
-            </p>
-            <p className="pt-10">
-              0 à 4 bonnes réponses : Chaque expert a commencé débutant ! Rejoue
-              pour t'améliorer.
+            <p>
+              10 sur 10 ! Tu es un(e) vrai(e) pro du code, rien ne t'arrête !🚀
             </p>
             <p className="text-[var(--color-secondary)] text-2xl pt-10 pb-2 md:pb-8">
               Anecdote :<br />
@@ -84,5 +65,5 @@ function Resultat() {
     </>
   );
 }
+export default ResultatBoolean;
 
-export default Resultat;

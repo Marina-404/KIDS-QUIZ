@@ -1,7 +1,9 @@
 import { questionData } from "../data/quizData";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-
+import CorrectAudio from "../../public/kids-code_public_Voicy_Duolingo answer correct sound.mp3";
+import BadAudio from "../../public/kids-code_public_Voicy_Bad answer.mp3";
+import CongratulationAudio from "../../public/kids-code_public_CRWDApls_Applaudissements 25 50 pers 1 (ID 0812)_LS.mp3"
 
 function Quiz() {
   // question affichée
@@ -19,8 +21,11 @@ function Quiz() {
   // enregistre la reponse si elle est vrai implemente +1 à score
   const handleClick = (index: number) => {
     setSelect(index); 
+    if (index !== question.correctIndex) {
+    badAudio.play();}
     if (index === question.correctIndex) {
-      setScore((valueScore) => valueScore +1);
+    audio.play();      
+    setScore((valueScore) => valueScore + 1);
     }
   };
 
@@ -37,10 +42,14 @@ function Quiz() {
     } else {
       navigate("/resultat");
     }
-  }
+  };
+
+  const audio = new Audio(CorrectAudio);
+  const badAudio = new Audio(BadAudio);
+  const congratulationAdio = new Audio (CongratulationAudio)
 
   return (
-    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
+    <div  className="min-h-screen text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
       <div>
         {/* numéro de la question */}
         <h2>
@@ -49,7 +58,8 @@ function Quiz() {
         
         {/* texte de la question  */}
         <p>{question.question}</p>
-        <div></div>
+        </div>
+        <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-1 lg:mx-50 lg:my-8">
         {question.answers.map((answer, index) => {
 
           // est ce que c'est la bonne reponse ?
@@ -68,12 +78,12 @@ function Quiz() {
         
         // buttons des réponses
         return (
-          <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2">
+          <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-80">
           <button
           type="button"
           key={index}
           onClick={() => handleClick(index)}
-          className={`${backgroundColor} rounded-xl h-18`}
+          className={`${backgroundColor} rounded-xl h-28`}
           
           disabled={select !== null}
           >
@@ -86,15 +96,16 @@ function Quiz() {
 
       
       {/* boutton question suivante ou derniere question*/}
-      <div>
+    <div className="py-4">
         {select !== null && (
           lastQuestion ? (
             <button 
             type="button"
-            className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
-            onClick={() => {
+            className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
+            onClick={() => {(congratulationAdio.play());
               localStorage.setItem("score", score.toString());
-              navigate ("/resultat")}}
+              navigate ("/resultat");
+               }}
             >
               Voir tes resultats 🚀
             </button>
@@ -102,9 +113,11 @@ function Quiz() {
           <button
           type="button"
           onClick={nextQuestion}
-          className="mx-auto px-6 py-2 text-lg cursor-pointer rounded-xl w-1/2"
+          className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-60 lg:w-80 lg:h-26"
           >
-            {currentQuestion === questionData.length -1 ? "" : "Question suivante"}
+            {currentQuestion === questionData.length -1 
+            ? "" 
+            : "Question suivante"}
           </button>
           )
         )}

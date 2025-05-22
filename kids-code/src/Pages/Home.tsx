@@ -35,30 +35,39 @@ useEffect(() => {
     setAnecdote(anecdotes[randomIndex]);
   }, []);
   return (
-      <div className="text-center bg-[var(--color-primary)] lg:flex flex-row-reverse justify-center items-center">
+      <div className="min-h-screen text-center bg-[var(--color-primary)] lg:flex flex-row-reverse justify-center items-center">
         <div className="block1">
         <img src={GirlPicture} alt="photo of a little girl sitting reading" />
         </div>
         <div className="block2">
         <article className="sniglet-regular text-[var(--color-text)] pr-2">
         <h2 className="text-[28px]">Règles du quiz</h2>
-         <div className="w-1/2 mx-auto h-1 bg-[var(--color-text)]  my-2"/>         
-          <p>1 - Lis bien chaque question : prend ton temps</p>
-          <p>2 - Choisi une seule bonne réponse parmi les propositions (A,B,C,D)</p>
-          <p>3 - Pas besoin d'être parfait : l'important c'est d'essayer</p>
-          <p>4 - Tu peux jouer seul ou avec des amis</p>
-          <p>5 - A la fin tu découvriras ton score</p>
-         </article>
-         <button className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 text-lg cursor-pointer rounded-xl
-"
+          <div className="w-1/2 mx-auto h-1 bg-[var(--color-text)]  my-2" />
+          <p className="pb-2">1 - Lis bien chaque question : prend ton temps</p>
+          <p className="pb-2">
+            2 - Choisi une seule bonne réponse parmi les propositions (A,B,C,D)
+          </p>
+          <p className="pb-2">
+            3 - Pas besoin d'être parfait : l'important c'est d'essayer
+          </p>
+          <p className="pb-2">4 - Tu peux jouer seul ou avec des amis</p>
+          <p className="pb-2">5 - A la fin tu découvriras ton score</p>
+        </article>
+        <button
+          className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-4 text-lg cursor-pointer rounded-xl"
         type="button"
         onClick={() => navigate ("/quiz")}
-       >Prêt? Go!</button>
+       >
+        Prêt ? Go !
+       </button>
  <div className="md:hidden">
           <BoutonLeCode />
         </div>    
-<p className="text-[var(--color-secondary)] text-2xl">{anecdote}</p>
-      </div>
+        <p className="text-[var(--color-secondary)] text-2xl pt-8 pb-2 md:pb-8">
+          Anecdote :<br />
+          {anecdote}
+        </p>      
+        </div>
       </div>
   );
 }

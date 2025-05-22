@@ -32,13 +32,6 @@ const handleNextQuestion = () => {
     }
 };
 
-const buttonStyle = (value:boolean) => {
-    if (selectAnswer === null) return "bg-[var(--color-secondary)]";
-    if (value === question.answer) return "";
-    if (value === selectAnswer && value != question.answer) return "";
-    return "bg-[var(--color-secondary)]";
-};
-
 return (
     <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]">
             {/* numéro de la question */}
@@ -50,14 +43,25 @@ return (
             <p>{question.question}</p>
 
             <div>
-                {["vrai", "faux"].map ((t, index) => {
+                {["Vrai", "Faux"].map ((t, index) => {
                     const value = index === 0;
+                    const correct = value === question.answer;
+                    const selected = value === selectAnswer;
+
+                    let backgroundColor = "bg-[var(--color-secondary)]";
+
+                    if (selectAnswer !== null) {
+                        if (selected && correct) backgroundColor = "bg-red-300";
+                        else if (selected && !correct) backgroundColor = "bg-red-400";
+                        else if (correct) backgroundColor = "bg-green-300";
+                    }
 
                     return (             
                     <button
                      key={t}
                      onClick={() =>handleAnswer(value)}
                      disabled={selectAnswer !== null}
+                     className={`${backgroundColor}`}
                      >
                         {t}
                      </button> 
