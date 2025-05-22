@@ -14,7 +14,11 @@ function QuizBoolean()  {
 
     // enregistre la question
     const handleAnswer = (answer: boolean) => {
+        const isCorrect = answer === question.answer;
         setSelectAnswer(answer);
+        if (!isCorrect) {
+            navigate("/perdu");
+        }
     }
 
 const navigate = useNavigate();
@@ -28,11 +32,12 @@ const handleNextQuestion = () => {
         setCurrentQuestionTF((oldValue) => oldValue +1)
         setSelectAnswer(null);
     } else {
-        navigate("/resultat");
+        navigate("/resultats");
     }
 };
 
 return (
+<section className="min-h-screen text-center bg-[var(--color-primary)]">
     <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]">
             {/* numéro de la question */}
             <h2>
@@ -51,20 +56,22 @@ return (
                     let backgroundColor = "bg-[var(--color-secondary)]";
 
                     if (selectAnswer !== null) {
-                        if (selected && correct) backgroundColor = "bg-red-300";
+                        if (selected && correct) backgroundColor = "bg-green-300";
                         else if (selected && !correct) backgroundColor = "bg-red-400";
                         else if (correct) backgroundColor = "bg-green-300";
                     }
 
-                    return (             
-                    <button
-                     key={t}
-                     onClick={() =>handleAnswer(value)}
-                     disabled={selectAnswer !== null}
-                     className={`${backgroundColor}`}
-                     >
-                        {t}
-                     </button> 
+                    return (    
+                    <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-80">
+                        <button
+                            key={t}
+                            onClick={() =>handleAnswer(value)}
+                            disabled={selectAnswer !== null}
+                            className={`${backgroundColor}`}
+                        >
+                            {t}
+                        </button> 
+                     </div>
                 );
              })}
             </div>
@@ -72,13 +79,16 @@ return (
                 <div>
                     <button
                     onClick={handleNextQuestion}
+                    className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
+
                     >
-                        {lastQuestionTF ? "Félicitation !" : "question suivante"}
+                        {lastQuestionTF ? "Félicitation !" : "Question Suivante"}
                     </button>
                     <p>{question.fact}</p>
                 </div>
             )}
               </div>
+             </section> 
             );
 
 }
