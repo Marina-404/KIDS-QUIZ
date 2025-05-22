@@ -1,6 +1,7 @@
 import type { Question } from "../types/Question";
 import { questionData } from "../data/quizData";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Quiz() {
   // question affichée
@@ -17,13 +18,18 @@ function Quiz() {
     setSelect(index); 
   }
 
+  const navigate = useNavigate();
+
+  // derniere question => page resultats
+  const lastQuestion = currentQuestion === questionData.length - 1;
+
   // question suivante
   const nextQuestion = () => {
     if (currentQuestion < questionData.length -1) {
       setCurrentQuestion((oldValue) => oldValue  +1);
       setSelect(null);
     } else {
-      alert("quiz finito !");
+      navigate("/resultat");
     }
   }
 
@@ -69,16 +75,33 @@ function Quiz() {
 })};
       </div>
 
-      {/* boutton question suivante */}
+      
+      {/* boutton question suivante ou derniere question*/}
       <div>
         {select !== null && (
+          lastQuestion ? (
+            <button 
+            type="button"
+            onClick={() => navigate ("/resultat")}
+            >
+              Voir tes resultats
+            </button>
+          ) : (
           <button
           type="button"
           onClick={nextQuestion}
           >
             {currentQuestion === questionData.length -1 ? "" : "Question suivante"}
           </button>
+          )
         )};
+      </div>
+
+      {/* apparition de la fact en meme temps que le bouton suivant */}
+      <div>
+        {select !==null && (
+          <p>{question.fact}</p>
+        )}
       </div>
     </>
   );
