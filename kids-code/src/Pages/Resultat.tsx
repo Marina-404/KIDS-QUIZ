@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { questionData } from "../data/quizData";
+import pictureRobot from "../../public/quiz-termine.png";
 
 const anecdotes = [
   "Le tout premier bug informatique était... un vrai insecte ! Une mite s’était coincée dans un ordinateur en 1947.",
@@ -41,7 +42,7 @@ function Resultat() {
         <div>
           <img
             className="w-45 mx-auto md:pt-12"
-            src="./public/quiz-termine.png"
+            src={pictureRobot}
             alt="quiz terminé"
           />
           <h1 className="font-['Sniglet'] text-[var(--color-text)] text-6xl p-2">
