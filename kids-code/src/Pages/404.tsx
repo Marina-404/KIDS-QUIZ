@@ -73,7 +73,7 @@ function Errorpath() {
 						type="button"
 						className="bg-[#eebefa] border-2 border-[var(--color-secondary)] cursor-pointer rounded-lg p-2 font-['Sniglet'] mt-4 block mx-auto"
 					>
-						<a href="/">Retour à la page d'accueil &#128521;</a>
+						<a href="/">Back Home &#128521;</a>
 					</button>
 				)}
 			</div>

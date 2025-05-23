@@ -52,18 +52,19 @@ const handleNextQuestion = () => {
 };
 
 return (
-<section className="text-center bg-[var(--color-primary)]">
-    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)] grid gap-4">
+
+       <div className="flex-1 h-full flex flex-col justify-center items-center bg-[var(--color-primary)] text-center text-[var(--color-text)]">
+
             {/* numéro de la question */}
-            <h2>
+            <h2 className='mb-3 text-3xl'>
               Question {currentQuestionTF + 1} / {trueOrFalseData.length} :
             </h2>
             
             {/* texte de la question  */}
-            <p className='text-2xl'>{question.question}</p>
+            <p className='mb-7 text-2xl'>{question.question}</p>
 
-            <div className='lg:flex lg:justify-center lg:m-12 lg:mx-48' >
-                {["Vrai", "Faux"].map ((t, index) => {
+            <div className='lg:flex lg:justify-center lg:m-8 lg:mx-48' >
+                {["VRAI", "FAUX"].map ((t, index) => {
                     const value = index === 0;
                     const correct = value === question.answer;
                     const selected = value === selectAnswer;
@@ -71,18 +72,18 @@ return (
                     let backgroundColor = "bg-[var(--color-secondary)]";
 
                     if (selectAnswer !== null) {
-                        if (selected && correct) backgroundColor = "bg-green-300";
+                        if (selected && correct) backgroundColor = "bg-green-400";
                         else if (selected && !correct) backgroundColor = "bg-red-400";
-                        else if (correct) backgroundColor = "bg-green-300";
+                        else if (correct) backgroundColor = "bg-green-400";
                     }
 
                     return (    
-                    <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-80">
+                    <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-4 py-2 pb-4 text-lg cursor-pointer rounded-xl w-60">
                         <button
                             key={t}
                             onClick={() =>handleAnswer(value)}
                             disabled={selectAnswer !== null}
-                            className={`${backgroundColor} rounded-xl h-28`}
+                            className={`${backgroundColor} rounded-xl h-25`}
                         >
                             {t}
                         </button> 
@@ -94,17 +95,16 @@ return (
                 <div>
                     <button
                     onClick={handleNextQuestion}
-                    className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-4 text-lg cursor-pointer rounded-xl w-80"
+                    className="bg-[var(--color-button)] text-[var(--color-secondary)] lg:mt-0 mt-4 px-6 py-4 text-lg cursor-pointer rounded-xl w-60"
 
                     >
-                        {lastQuestionTF ? "Félicitation !" : "Question Suivante"}
+                        {lastQuestionTF ? "Félicitations ! 🚀" : "Question Suivante"}
                     </button>
-                    <p className='py-4'>{question.fact}</p>
+                    <p className='text-[var(--color-secondary)] text-lg md:text-1xl pt-8 pb-2 md:pb-8' >{question.fact}</p>
                 </div>
             )}
               </div>
-             </section> 
-            );
+)
 
 }
 

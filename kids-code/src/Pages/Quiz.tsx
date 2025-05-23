@@ -53,16 +53,16 @@ function Quiz() {
     <div className="flex-1 h-full flex flex-col justify-center items-center bg-[var(--color-primary)] text-center">
       <div>
         {/* numéro de la question */}
-        <h1 className="text-3xl text-[var(--color-text)]">
+        <h1 className=" mb-3 text-3xl text-[var(--color-text)]">
           Question {currentQuestion + 1} / {questionData.length} :
         </h1>
 
         {/* texte de la question  */}
-        <p className="text-xl pb-6 text-[var(--color-text)]">
+        <p className="text-2xl pb-4 text-[var(--color-text)]">
           {question.question}
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-fit mx-auto my-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-fit mx-auto">
         {question.answers.map((answer, index) => {
           // est ce que c'est la bonne reponse ?
           const correct = index === question.correctIndex;
@@ -73,19 +73,19 @@ function Quiz() {
           let backgroundColor = "bg-[var(--color-secondary)]";
 
           if (select !== null) {
-            if (selected && correct) backgroundColor = "bg-green-300";
+            if (selected && correct) backgroundColor = "bg-green-400";
             else if (selected && !correct) backgroundColor = "bg-red-400";
-            else if (correct) backgroundColor = "bg-green-300";
+            else if (correct) backgroundColor = "bg-green-400";
           }
 
           // buttons des réponses
           return (
-            <div className=" flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6 py-2 text-lg cursor-pointer rounded-xl w-80">
+            <div className="flex flex-col mx-auto text-[var(--color-primary)] sniglet-regular px-6  text-lg cursor-pointer rounded-xl w-80">
               <button
                 type="button"
                 key={index}
                 onClick={() => handleClick(index)}
-                className={`${backgroundColor} rounded-xl h-28`}
+                className={`${backgroundColor} rounded-xl h-15 md:h-28`}
                 disabled={select !== null}
               >
                 {answer.answer}
@@ -96,12 +96,12 @@ function Quiz() {
       </div>
 
       {/* boutton question suivante ou derniere question*/}
-    <div className="py-4">
+    <div>
         {select !== null && (
           lastQuestion ? (
             <button 
             type="button"
-            className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
+            className="mt-5 bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
             onClick={() => {congratulationAdio.play();
               congratulationAdio.volume = 0.25;
               localStorage.setItem("score", score.toString());
@@ -114,7 +114,7 @@ function Quiz() {
             <button
               type="button"
               onClick={nextQuestion}
-              className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-60 lg:w-80 lg:h-26"
+              className="mt-5 bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-60 lg:w-80 lg:h-26"
             >
               {currentQuestion === questionData.length - 1
                 ? ""
@@ -124,7 +124,7 @@ function Quiz() {
       </div>
 
       {/* apparition de la fact en meme temps que le bouton suivant */}
-      <div>{select !== null && <p>{question.fact}</p>}</div>
+      <div className="text-[var(--color-secondary)] text-lg mr-6 ml-6 md:text-1xl pt-3 pb-2 md:pb-8">{select !== null && <p>{question.fact}</p>}</div>
     </div>
   );
 }
