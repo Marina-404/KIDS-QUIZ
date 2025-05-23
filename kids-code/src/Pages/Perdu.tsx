@@ -1,4 +1,5 @@
 import { NavLink } from "react-router";
+import pictureRobotperdu from "../../public/ChatGPT_Image_23_mai_2025_12_35_46.png";
 
 function Perdu() {
     return (
@@ -7,7 +8,7 @@ function Perdu() {
         <div>
           <img
             className="w-45 mx-auto md:pt-12"
-            src="./public/quiz-termine.png"
+            src={pictureRobotperdu}
             alt="quiz terminé"
           />
           <h1 className="text-[var(--color-text)] text-6xl p-10">

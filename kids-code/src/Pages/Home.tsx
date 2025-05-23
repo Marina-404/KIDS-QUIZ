@@ -60,14 +60,14 @@ function Home() {
 					<p className="pb-2">6 - A la fin tu découvriras ton score</p>
 				</article>
 				<button
-					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-3 mr-5 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mt-4"
+					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-5 py-3 mr-5 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mt-4"
 					type="button"
 					onClick={() => navigate("/quiz")}
 				>
 					Questions / Réponses
 				</button>
 				<button
-					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-3 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mb-6"
+					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-5 py-3 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mb-6"
 					type="button"
 					onClick={() => navigate("/quiz-true-false")}
 				>
