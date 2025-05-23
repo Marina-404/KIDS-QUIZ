@@ -23,9 +23,11 @@ function QuizBoolean()  {
         const isCorrect = answer === question.answer;
         setSelectAnswer(answer);
         if (isCorrect){
-        audio.play();  }
+        audio.play();
+    audio.volume = 0.25;  }
         if (!isCorrect) {
              badAudio.play();
+             badAudio.volume = 0.25;
             navigate("/perdu");
         }
     }
@@ -42,7 +44,10 @@ const handleNextQuestion = () => {
         setSelectAnswer(null);
     } else {
         navigate("/resultats");
-        (congratulationAdio.play())
+        congratulationAdio.play();
+        congratulationAdio.volume = 0.25;
+    
+        
     }
 };
 
