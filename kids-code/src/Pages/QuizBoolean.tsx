@@ -1,8 +1,14 @@
 import { trueOrFalseData } from '../data/quizDataBoolean';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import CorrectAudio from "../../public/kids-code_public_Voicy_Duolingo answer correct sound.mp3";
+import BadAudio from "../../public/kids-code_public_Voicy_Bad answer.mp3";
+import CongratulationAudio from "../../public/kids-code_public_CRWDApls_Applaudissements 25 50 pers 1 (ID 0812)_LS.mp3"
 
 function QuizBoolean()  {
+    const audio = new Audio(CorrectAudio);
+  const badAudio = new Audio(BadAudio);
+  const congratulationAdio = new Audio (CongratulationAudio);
     // question affichée
     const [currentQuestionTF, setCurrentQuestionTF] = useState(0);
 
@@ -13,10 +19,15 @@ function QuizBoolean()  {
     const question = trueOrFalseData[currentQuestionTF];
 
     // enregistre la question
-    const handleAnswer = (answer: boolean) => {
+    const handleAnswer = (answer: boolean ) => {
         const isCorrect = answer === question.answer;
         setSelectAnswer(answer);
+        if (isCorrect){
+        audio.play();
+    audio.volume = 0.25;  }
         if (!isCorrect) {
+             badAudio.play();
+             badAudio.volume = 0.25;
             navigate("/perdu");
         }
     }
@@ -33,21 +44,25 @@ const handleNextQuestion = () => {
         setSelectAnswer(null);
     } else {
         navigate("/resultats");
+        congratulationAdio.play();
+        congratulationAdio.volume = 0.25;
+    
+        
     }
 };
 
 return (
-<section className="min-h-screen text-center bg-[var(--color-primary)]">
-    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)]">
+<section className="text-center bg-[var(--color-primary)]">
+    <div  className="text-center text-[var(--color-text)] bg-[var(--color-primary)] grid gap-4">
             {/* numéro de la question */}
             <h2>
               Question {currentQuestionTF + 1} / {trueOrFalseData.length} :
             </h2>
             
             {/* texte de la question  */}
-            <p>{question.question}</p>
+            <p className='text-2xl'>{question.question}</p>
 
-            <div>
+            <div className='lg:flex lg:justify-center lg:m-12 lg:mx-48' >
                 {["Vrai", "Faux"].map ((t, index) => {
                     const value = index === 0;
                     const correct = value === question.answer;
@@ -67,7 +82,7 @@ return (
                             key={t}
                             onClick={() =>handleAnswer(value)}
                             disabled={selectAnswer !== null}
-                            className={`${backgroundColor}`}
+                            className={`${backgroundColor} rounded-xl h-28`}
                         >
                             {t}
                         </button> 
@@ -79,12 +94,12 @@ return (
                 <div>
                     <button
                     onClick={handleNextQuestion}
-                    className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
+                    className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-4 text-lg cursor-pointer rounded-xl w-80"
 
                     >
                         {lastQuestionTF ? "Félicitation !" : "Question Suivante"}
                     </button>
-                    <p>{question.fact}</p>
+                    <p className='py-4'>{question.fact}</p>
                 </div>
             )}
               </div>
