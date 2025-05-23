@@ -50,15 +50,17 @@ function Quiz() {
   };
 
   return (
-    <div className="h-full flex flex-col items-center justify-center bg-[var(--color-primary)] text-center">
+    <div className="flex-1 h-full flex flex-col justify-center items-center bg-[var(--color-primary)] text-center">
       <div>
         {/* numéro de la question */}
-        <h1 className="text-3xl">
+        <h1 className="text-3xl text-[var(--color-text)]">
           Question {currentQuestion + 1} / {questionData.length} :
         </h1>
 
         {/* texte de la question  */}
-        <p className="text-xl pb-6">{question.question}</p>
+        <p className="text-xl pb-6 text-[var(--color-text)]">
+          {question.question}
+        </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-fit mx-auto my-8">
         {question.answers.map((answer, index) => {
