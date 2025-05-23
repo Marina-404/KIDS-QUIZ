@@ -6,6 +6,9 @@ import BadAudio from "../../public/kids-code_public_Voicy_Bad answer.mp3";
 import CongratulationAudio from "../../public/kids-code_public_CRWDApls_Applaudissements 25 50 pers 1 (ID 0812)_LS.mp3"
 
 function Quiz() {
+  const audio = new Audio(CorrectAudio);
+  const badAudio = new Audio(BadAudio);
+  const congratulationAdio = new Audio (CongratulationAudio)
   // question affichée
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -22,9 +25,11 @@ function Quiz() {
   const handleClick = (index: number) => {
     setSelect(index); 
     if (index !== question.correctIndex) {
-    badAudio.play();}
+    badAudio.play();
+     badAudio.volume = 0.25;}
     if (index === question.correctIndex) {
-    audio.play();      
+    audio.play(); 
+    audio.volume = 0.25;     
     setScore((valueScore) => valueScore + 1);
     }
   };
@@ -43,10 +48,6 @@ function Quiz() {
       navigate("/resultat");
     }
   };
-
-  const audio = new Audio(CorrectAudio);
-  const badAudio = new Audio(BadAudio);
-  const congratulationAdio = new Audio (CongratulationAudio)
 
   return (
     <div  className="min-h-screen text-center text-[var(--color-text)] bg-[var(--color-primary)]   ">
@@ -102,7 +103,8 @@ function Quiz() {
             <button 
             type="button"
             className="bg-[var(--color-button)] text-[var(--color-secondary)] px-6 py-2 text-lg cursor-pointer rounded-xl w-80"
-            onClick={() => {(congratulationAdio.play());
+            onClick={() => {congratulationAdio.play();
+              congratulationAdio.volume = 0.25;
               localStorage.setItem("score", score.toString());
               navigate ("/resultat");
                }}
