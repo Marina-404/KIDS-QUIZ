@@ -45,32 +45,35 @@ function Home() {
 			<div className="block2">
 				<article className="sniglet-regular text-[var(--color-text)]">
 					<h2 className="text-[28px]">Règles du quiz</h2>
-					<div className="w-1/2 mx-auto h-1 bg-[var(--color-text)]" />
+					<div className="m-2 w-1/2 mx-auto h-1 bg-[var(--color-text)]" />
 					<p className="pb-2">1 - Lis bien chaque question : prend ton temps</p>
 					<p className="pb-2">
-						2 - Choisi une seule bonne réponse parmi les propositions (A,B,C,D)
+						2 - Pour le quiz Questions/Réponses : choisi une seule bonne réponse parmi les propositions (A,B,C,D)
 					</p>
 					<p className="pb-2">
-						3 - Pas besoin d'être parfait : l'important c'est d'essayer
+             3 - Pour le quiz Vrai/Faux : une seule erreur et tu recommences depuis le début !
+          </p>
+					<p className="pb-2">
+						4 - Pas besoin d'être parfait : l'important c'est d'essayer
 					</p>
-					<p className="pb-2">4 - Tu peux jouer seul ou avec des amis</p>
-					<p className="pb-2">5 - A la fin tu découvriras ton score</p>
+					<p className="pb-2">5 - Tu peux jouer seul ou avec des amis</p>
+					<p className="pb-2">6 - A la fin tu découvriras ton score</p>
 				</article>
 				<button
-					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 m-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mt-8"
+					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-3 mr-5 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mt-4"
 					type="button"
 					onClick={() => navigate("/quiz")}
 				>
 					Questions / Réponses
 				</button>
 				<button
-					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 m-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mb-18"
+					className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-3 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300 mb-6"
 					type="button"
 					onClick={() => navigate("/quiz-true-false")}
 				>
 					Vrai ou Faux ?
 				</button>
-				<div className="md:hidden mb-6">
+				<div className="md:hidden">
 					<BoutonLeCode />
 				</div>
 				<p className="text-[var(--color-secondary)] text-2xl pt-8 pb-4 md:pb-8">

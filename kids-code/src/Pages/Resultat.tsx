@@ -37,30 +37,30 @@ function Resultat() {
 
   return (
     <>
-      <section className="min-h-screen text-center bg-[var(--color-primary)]">
+      <section className="text-center bg-[var(--color-primary)]">
         <div>
           <img
             className="w-45 mx-auto md:pt-12"
             src="./public/quiz-termine.png"
             alt="quiz terminé"
           />
-          <h1 className="text-[var(--color-text)] text-6xl p-10">
+          <h1 className="font-['Sniglet'] text-[var(--color-text)] text-6xl p-2">
             Résultat :
             </h1>
-          <div className="text-[var(--color-text)] w-[80%] p-2 mx-auto text-2xl">
-            <p className="p-2">
+          <div className="text-[var(--color-text)] w-[80%] p-2 mx-auto">
+            <p className="p-2 text-3xl">
               Tu as obtenu {scoreNumber} / {questionData.length}
               </p>
-            <p>Bravo à toi !</p>
-            <p className="pt-10">
+            <p className="text-3xl">Bravo à toi !</p>
+            <p className="pt-10 text-2xl">
               8 à 10 bonnes réponses : Incroyable ! Tu es prêt à coder ton
               premier robot !
             </p>
-            <p className="pt-10">
+            <p className="pt-10 text-2xl">
               5 à 7 bonnes réponses : Pas mal ! Tu comprends déjà plein de
               choses.
             </p>
-            <p className="pt-10">
+            <p className="pt-10 text-2xl">
               0 à 4 bonnes réponses : Chaque expert a commencé débutant ! Rejoue
               pour t'améliorer.
             </p>
@@ -72,7 +72,7 @@ function Resultat() {
 
           <Link to="/">
             <button
-              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py-2 mb-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300
+              className="sniglet-regular bg-[var(--color-secondary)] text-[var(--color-primary)] px-6 py- mb-6 text-lg cursor-pointer rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition duration-300
 "
               type="button"
             >
