@@ -1,8 +1,14 @@
 import { trueOrFalseData } from '../data/quizDataBoolean';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import CorrectAudio from "../../public/kids-code_public_Voicy_Duolingo answer correct sound.mp3";
+import BadAudio from "../../public/kids-code_public_Voicy_Bad answer.mp3";
+import CongratulationAudio from "../../public/kids-code_public_CRWDApls_Applaudissements 25 50 pers 1 (ID 0812)_LS.mp3"
 
 function QuizBoolean()  {
+    const audio = new Audio(CorrectAudio);
+  const badAudio = new Audio(BadAudio);
+  const congratulationAdio = new Audio (CongratulationAudio);
     // question affichée
     const [currentQuestionTF, setCurrentQuestionTF] = useState(0);
 
@@ -13,10 +19,13 @@ function QuizBoolean()  {
     const question = trueOrFalseData[currentQuestionTF];
 
     // enregistre la question
-    const handleAnswer = (answer: boolean) => {
+    const handleAnswer = (answer: boolean ) => {
         const isCorrect = answer === question.answer;
         setSelectAnswer(answer);
+        if (isCorrect){
+        audio.play();  }
         if (!isCorrect) {
+             badAudio.play();
             navigate("/perdu");
         }
     }
@@ -33,6 +42,7 @@ const handleNextQuestion = () => {
         setSelectAnswer(null);
     } else {
         navigate("/resultats");
+        (congratulationAdio.play())
     }
 };
 
