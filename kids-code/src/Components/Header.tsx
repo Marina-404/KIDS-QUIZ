@@ -1,5 +1,6 @@
 import BoutonLeCode from "./Bouton_LeCode";
 import { Link } from "react-router";
+import logoQuiz from "../../public/logo-kids-code.png";
 
 function Header() {
 	return (
@@ -8,7 +9,7 @@ function Header() {
 				<Link to="/">
 					<img
 						className="w-30"
-						src="./public/logo-kids-code.png"
+						src={logoQuiz}
 						alt="Kids Code"
 					/>
 				</Link>
